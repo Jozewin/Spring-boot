@@ -2,3 +2,5 @@ Different ways of using dependency injection with abstraction
 
 In this example in CommentService instead of creating constructor we used @AutoWired keyword
 which will let them use instances created by the Spring in the context
+
+in Bean Example we setup bean of the component like i used dagger hilt
