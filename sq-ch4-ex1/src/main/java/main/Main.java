@@ -1,5 +1,5 @@
 package main;
-
+// Using interfaces to define contracts
 import model.Comment;
 import proxies.EmailCommentNotificationProxy;
 import repositories.CommentRepository;
