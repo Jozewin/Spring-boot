@@ -1,5 +1,8 @@
 package main;
-// Using interfaces to define contracts
+
+// Different ways of using dependency injection with abstraction
+
+
 import config.ProjectConfiguration;
 import model.Comment;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,8 +14,6 @@ import services.CommentService;
 public class Main {
     public static void main(String[] args) {
         var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
-
-
 
         var comment = new Comment();
 

@@ -1,23 +1,4 @@
-Using dependency injection with abstractions
+Different ways of using dependency injection with abstraction
 
-- So while using Spring Framework every object need not to be in the context
-- Yes adding object to the context will give access to the Spring to use them but Spring doesnt need all objects to use
-- So the question that should be raised is
-
-“Does this object need to be managed by the framework?”
-
-In this project we just used DI feature of Spring to do our work. So adding most of the object into context wont make anything bad
-
-Only "Comment" object doesnt need the DI and its not a Dependency
-
-The other objects in our class design are as
-follows:
-- CommentService—Has two dependencies, the CommentRepository and the CommentNotificationProxy
-- DBCommentRepository—Implements the CommentRepository interface and is a dependency of the CommentService
-- EmailCommentNotificationProxy—Implements the CommentNotificationProxy interface and is a dependency of the
-CommentService
-
-
-And another important not is not everything needed to be noted as Stereotype or Annotated eg @Component
-Stereotype is only needed when The Spring Context need it to be Instantiated since the interface class wont be instantiated
-they dont need to be marked as Stereotype or Annotated
+In this example in CommentService instead of creating constructor we used @AutoWired keyword
+which will let them use instances created by the Spring in the context
