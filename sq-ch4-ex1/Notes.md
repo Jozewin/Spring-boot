@@ -1,13 +1,13 @@
-# Choosing what to auto-wire from multiple implementations of an abstraction
-- Where there are two implementation of a interface and they both are being used as @Component.
-- It will coz error to find spring to check which one to use
+# 5.1.1 How singleton beans work
 
-## To solve this there are two annotations
-- @Qualifier()
-- @Primary
+- The singleton in Spring works different compared to others
+- In others while using Singleton we wont be creating multiple instances but what is singleton?
 
-#### @Primary
-- If there are two implementation the spring will take the one implementation with the Primary tag
+### What is even Singleton?
+- Singleton is nothing but when an instance is created it will be used everywhere when ever its class is called
+- new instances will not be created thats what is Singleton IG
 
-### @Qualifier("Name")
-- Using this we can declare name to the implementations and when calling the object in somewhere will mention @Qualifier("And the name")
+### How Singleton differs in Spring Compared to others?
+- In others only one instance will be created and will be called everywhere
+- But in Spring the instance will be created then what? But we can create as many instance as we want
+- So then many instance will be called? Nope only the Instance in the context will be use wherever the places the instance is created 

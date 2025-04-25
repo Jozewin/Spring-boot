@@ -1,20 +1,23 @@
+// 5.1.1 How singleton beans work
+
 package main;
 
 import configuration.ProjectConfiguration;
 import model.Comment;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import services.CommentService;
+import services.UserService;
 
 public class Main {
 
     public static void main(String[] args) {
-        var context = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
+       var c = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
 
-        var comment = new Comment();
-        comment.setAuthor("Laurentiu");
-        comment.setText("Demo comment");
+       var cs1 = c.getBean(CommentService.class);
+       var cs2 = c.getBean(UserService.class);
 
-        var commentService = context.getBean(CommentService.class);
-        commentService.publishComment(comment);
+       boolean b1 = cs1.getCommentRepository() == cs2.getCommentRepository();
+
+        System.out.println(b1);
     }
 }
