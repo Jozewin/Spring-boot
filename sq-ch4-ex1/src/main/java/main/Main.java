@@ -2,23 +2,23 @@
 
 package main;
 
-import configuration.ProjectConfiguration;
-import model.Comment;
+import configuration.ProjectConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import services.Comment;
 import services.CommentService;
-import services.UserService;
 
 public class Main {
 
     public static void main(String[] args) {
-       var c = new AnnotationConfigApplicationContext(ProjectConfiguration.class);
+        var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-       var cs1 = c.getBean(CommentService.class);
-       var cs2 = c.getBean(UserService.class);
+        var service = c.getBean(CommentService.class);
 
-       boolean b1 = cs1.getCommentRepository() == cs2.getCommentRepository();
+        Comment comment = new Comment();
+        comment.setAuthor("Natasha");
+        comment.setText("Look yourself");
 
-        System.out.println(b1);
+        service.publishComment(comment);
     }
 
 }

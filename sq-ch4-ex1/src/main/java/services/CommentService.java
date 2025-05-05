@@ -1,23 +1,15 @@
 package services;
 
-import model.Comment;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import repository.CommentRepository;
+
+import java.util.logging.Logger;
 
 @Service
 public class CommentService {
 
+    private Logger logger = Logger.getLogger(CommentService.class.getName());
 
-  private final CommentRepository commentRepository;
-
-  public CommentService(CommentRepository commentRepository){
-    this.commentRepository = commentRepository;
-  }
-
-  public CommentRepository getCommentRepository(){
-    return commentRepository;
-  }
+    public void publishComment(Comment comment){
+        logger.info("Publishing comment :- " + comment.getText());
+    }
 }

@@ -1,13 +1,12 @@
-# 5.1.1 How singleton beans work
+# 6 Using aspects with Spring AOP
+- Since we have worked @Autowired annotation we know how inject works by now.
+- When we use @Autowired annotation the spring will inject the object which we requested.
+- There is not only DI available. Using spring we can also intercept method calls and alter execution of the method when we want
 
-- The singleton in Spring works different compared to others
-- In others while using Singleton we wont be creating multiple instances but what is singleton?
 
-### What is even Singleton?
-- Singleton is nothing but when an instance is created it will be used everywhere when ever its class is called
-- new instances will not be created thats what is Singleton IG
-
-### How Singleton differs in Spring Compared to others?
-- In others only one instance will be created and will be called everywhere
-- But in Spring the instance will be created then what? But we can create as many instance as we want
-- So then many instance will be called? Nope only the Instance in the context will be use wherever the places the instance is created 
+### When designing an aspect there are three important parts to be covered:
+- What code you want Spring to execute when you call specific methods. This is called **Aspect**
+- When the app should execute this logic of the aspect. This is named **Advice**
+- Which methods the framework need to intercept and execute the aspect for them. This is called **PointCut**
+    - Another aspect terminology is **Join Point** -> defines the event that triggers the execution of an aspect.
+  
