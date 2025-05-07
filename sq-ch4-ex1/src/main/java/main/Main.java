@@ -21,9 +21,9 @@ public class Main {
         comment.setAuthor("Natasha");
         comment.setText("Look yourself");
 
-        String value = service.publishComment(comment);
+        service.publishComment(comment);
 
-        logger.info(value);
+
     }
 
 }

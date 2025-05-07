@@ -3,33 +3,27 @@ package aspect;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.core.annotation.Order;
 import services.Comment;
 
 import java.util.Arrays;
 import java.util.logging.Logger;
 
 @Aspect
+@Order(2)
 public class LoggingAspect {
 
     private Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    @Around("execution(* services.*.*(..))")
+    @Around("@annotation(ToLog)")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
-        String methodName = joinPoint.getSignature().getName();     // Get the method name
-        Object[] arguments = joinPoint.getArgs();   // Get the arguments of the method
+        logger.info("Logging Aspect: Calling the interpreted method. ");
 
-        logger.info("Method "+ methodName +" with parameter "+ Arrays.asList(arguments)+ " will execute");
+        Object returnedValue = joinPoint.proceed();
 
-        Comment comment = new Comment();
-        comment.setText("Here something going on");
+        logger.info("Logging Aspect: Method executed and returned "+returnedValue);
 
-        Object[] newArguments = {comment};
-
-        Object returnedByMethod = joinPoint.proceed(newArguments);
-
-        logger.info("Method executed and returned "+ returnedByMethod);
-
-        return returnedByMethod;
+        return returnedValue;
 
     }
 }
